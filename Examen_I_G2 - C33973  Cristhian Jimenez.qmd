@@ -191,7 +191,7 @@ for (variable in variables_categoricas) {
 }
 ```
 
-8. (r) Para las variables numéricas realice gráficos de barras donde se ponga un color de acuerdo a si es moroso o no. Analice los resultados.
+8.(r) Para las variables numéricas realice gráficos de barras donde se ponga un color de acuerdo a si es moroso o no. Analice los resultados.
 ```{r}
 # Crear los rangos de salario y edad
 moras <- moras %>%
@@ -249,6 +249,24 @@ for (variable in variables_numericas) {
   print(p)
 }
 ```
+9.(r) Replique lo anterior, items 2-8, en el lenguaje de programación R y haga uso de Git, agregue un .gitignore conveniente. Cada vez que termine un punto realice un commit. El commit final debe ser el punto que se muestra a continuación. Usar commits convencionales.
+
+repositorio https://github.com/Cristhian892/Examen-II-virtual.git
+nota: se me olvido hacer los commit, los hice cuando termine hasta el punto 8 por estan segudos, el punto 10 cuando realice los commit de subida del 2-8 no lo e realio
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
