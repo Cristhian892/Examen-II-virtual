@@ -1,0 +1,54 @@
+---
+title: "Examen_I_G2 - C33973  Cristhian Jimenez"
+format: html
+editor: visual
+---
+
+## 
+
+```{r}
+#install.packages("dplyr")
+#install.packages("ggplot2")
+#install.packages("tidyr")
+#install.packages("readr")
+#install.packages("rpart")
+#install.packages("rpart.plot")
+
+library(dplyr)
+library(ggplot2)
+library(tidyr)
+library(readr)
+library(rpart)
+library(rpart.plot)
+
+```
+
+```{r}
+#cargar datos
+moras <- read_delim("moras.txt", delim = ",")
+```
+
+2.(r) Realice un resumen de 5 números incluyendo el promedio. Para las columnas numéricas
+
+```{r}
+Estadistica_EDAD <- moras %>% 
+  summarise(
+    EDAD_min = min(EDAD, na.rm = TRUE),
+    EDAD_Q1 = quantile(moras$EDAD, 0.25, na.rm = TRUE),
+    EDAD_mediana = median(EDAD, na.rm = TRUE),
+    EDAD_Q3 = quantile(moras$EDAD, 0.75, na.rm = TRUE),
+    EDAD_max = max(EDAD, na.rm = TRUE),
+    SALARIO_media = mean(EDAD, na.rm = TRUE)
+)
+Estadistica_SALARIO <- moras %>% 
+  summarise(
+    SALARIO_min = min(SALARIO, na.rm = TRUE),
+    SALARIO_Q1 = quantile(moras$SALARIO, 0.25, na.rm = TRUE),
+    SALARIO_mediana = median(SALARIO, na.rm = TRUE),
+    SALARIO_Q3 = quantile(moras$SALARIO, 0.75, na.rm = TRUE),
+    SALARIO_max = max(SALARIO, na.rm = TRUE),
+    SALARIO_media = mean(SALARIO, na.rm = TRUE),
+)
+Estadistica_EDAD
+Estadistica_SALARIO
+```
