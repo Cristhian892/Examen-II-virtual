@@ -249,10 +249,36 @@ for (variable in variables_numericas) {
   print(p)
 }
 ```
-9.(r) Replique lo anterior, items 2-8, en el lenguaje de programación R y haga uso de Git, agregue un .gitignore conveniente. Cada vez que termine un punto realice un commit. El commit final debe ser el punto que se muestra a continuación. Usar commits convencionales.
 
+9.(r) Replique lo anterior, items 2-8, en el lenguaje de programación R y haga uso de Git, agregue un .gitignore conveniente. Cada vez que termine un punto realice un commit. El commit final debe ser el punto que se muestra a continuación. Usar commits convencionales.
 repositorio https://github.com/Cristhian892/Examen-II-virtual.git
 nota: se me olvido hacer los commit, los hice cuando termine hasta el punto 8 por estan segudos, el punto 10 cuando realice los commit de subida del 2-8 no lo e realio
+
+10. Se busca encontrar cuáles son las variables que podrían tener mayor relación con que la persona sea morosa o no, para ello se decide realizar un árbol de decisión por su interpretabilidad y su fácil explicación a los altos mandos. A continuación se adjunta un código ejemplo de cómo se construye un árbol y cómo se muestra
+$ #| eval: false
+$ library(rpart)
+$ library(rpart.plot)
+$ tree <- rpart(y~., data = df)
+$ rpart.plot(tree)
+En este caso la variable y es la variable que se quiere explicar con las otras y . indica que se usen todas las variables, recuerde eliminar el identificador único del df.
+Podría requerir codificar de una manera diferente algunas clases en las variables categóricas, esto para una mejor visualización.
+Explique los resultados del árbol para alguien que no tiene tanta formación cuantitativa y busca tomar decisiones con base en sus resultados.
+```{r}
+moras_menos_IDENTIFICACION <- moras %>% 
+  select(-IDENTIFICACION)
+
+moras_factores <-  moras_menos_IDENTIFICACION %>% 
+  mutate_if(is.character, as.factor)
+tree <- rpart(INDICADOR_MOROSO ~., data = moras_factores)
+rpart.plot(tree)
+```
+El árbol nos ayuda a observar cuáles son las variables que tienen un mayor peso para detectar si alguien será moroso. En el árbol se ve como los trabajadores independientes son de gran riesgo en volverse morosos, los que son asegurados voluntarios presentan un riesgo moderado y los asalariados son de menor riesgo.
+Las personas con salarios bajaos son más propensos a quedar morosos y cuando aumenta el salario el riesgo de morosidad empieza a disminuir. Ahora viendo el sector, vemos que el sector privado  tiene mayor probabilidad de ser morosos que los del sector público y con base a la edad  entre más joven más propenso a ser moroso y entre más edad este riesgo baja.
+
+Bibliografica 
+*https://www.simplypsychology.org/z-score.html
+*https://www.statisticshowto.com/probability-and-statistics/z-score/
+*https://www-spsanderson-com.translate.goog/steveondata/posts/2024-12-03/?_x_tr_sl=en&_x_tr_tl=es&_x_tr_hl=es&_x_tr_pto=tc
 
 
 
