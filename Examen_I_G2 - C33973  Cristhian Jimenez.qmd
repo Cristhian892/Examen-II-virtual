@@ -1,10 +1,11 @@
 ---
 title: "Examen_I_G2 - C33973  Cristhian Jimenez"
-format: html
+author: "Cristhian Jimenez"
+format:
+  html:
+    embed-resources: true
 editor: visual
 ---
-
-## 
 
 ```{r}
 #install.packages("dplyr")
