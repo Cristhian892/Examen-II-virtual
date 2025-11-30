@@ -52,3 +52,36 @@ Estadistica_SALARIO <- moras %>%
 Estadistica_EDAD
 Estadistica_SALARIO
 ```
+
+3.(r) Realice una columna donde se identifiquen valores atípicos haciendo uso del Z-Score, de tal manera que si el valor absoluto del Z-Score es mayor a 1,96 se considera un valor atípico. Esto para la columna de salario y edad.
+```{r}
+## Z-Score para salario
+promedio_salario <- mean(moras$SALARIO, na.rm = TRUE)
+desviacion_estandar_salario <- sd(moras$SALARIO, na.rm = TRUE)
+Z_SALARIO <- (moras$SALARIO - promedio_salario) / desviacion_estandar_salario
+
+promedio_EDAD <- mean(moras$EDAD, na.rm = TRUE)
+desviacion_estandar_EDAD <- sd(moras$EDAD, na.rm = TRUE)
+Z_EDAD <- (moras$EDAD - promedio_EDAD)/ desviacion_estandar_EDAD
+
+moras$ATIPICO_SALARIO <- "Atípico" 
+moras$ATIPICO_SALARIO[abs(Z_SALARIO) > 1.96] <- "Normal"
+
+moras$ATIPICO_EDAD <- "Atípico"  
+moras$ATIPICO_EDAD[abs(Z_EDAD) > 1.96] <- "Normal"
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
