@@ -71,7 +71,14 @@ moras$ATIPICO_EDAD <- "Atípico"
 moras$ATIPICO_EDAD[abs(Z_EDAD) > 1.96] <- "Normal"
 ```
 
-
+4. (r) Detecte el porcentaje de valores faltantes en cada una de las columnas.
+```{r}
+for (columna in names(moras)) {
+  contar_na <- sum(is.na(moras[[columna]]))
+  porcentaje <- round((contar_na / nrow(moras)) * 100, 2)
+  cat("-", columna, ":", porcentaje, "% de NA\n")
+  }
+```
 
 
 
