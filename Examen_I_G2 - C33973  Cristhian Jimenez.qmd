@@ -29,7 +29,6 @@ moras <- read_delim("moras.txt", delim = ",")
 ```
 
 2.(r) Realice un resumen de 5 números incluyendo el promedio. Para las columnas numéricas
-
 ```{r}
 Estadistica_EDAD <- moras %>% 
   summarise(
@@ -80,7 +79,12 @@ for (columna in names(moras)) {
   }
 ```
 
-
+5.(r) Impute los valores faltantes haciendo uso de algún método de su preferencia.
+```{r}
+moras$EDAD[is.na(moras$EDAD)] <- mean(moras$EDAD, na.rm = TRUE)
+moras$SALARIO[is.na(moras$SALARIO)] <- mean(moras$SALARIO, na.rm = TRUE)
+moras$TIPO_ASEGURAMIENTO[is.na(moras$TIPO_ASEGURAMIENTO)] <- "DESCONOCIDO"
+```
 
 
 
