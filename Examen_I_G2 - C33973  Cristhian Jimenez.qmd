@@ -95,7 +95,57 @@ ggplot(moras, aes(x = SEXO)) +
        y = "Cantidad") +
   theme_minimal()
 ```
+Se puede ver que nuestros datos tiene más hombres que mujeres					
 
+```{r}
+ggplot(moras, aes(x = SALARIO)) +
+  geom_bar(fill = "brown", color = "black") +
+  labs(title = "Cantidad de Individuos por SALARIO",
+       x = "SALARIO", 
+       y = "Cantidad") +
+  theme_minimal()
+```
+Se puede ver que en algunos casos, los salario son bastantes grande en comparación con los demás, note que tiene un cero de más en cada columna, entonces para la comprensión solo se tiene que eliminar uno, no son 5 millones, sino 500 mil y así						
+
+```{r}
+ggplot(moras, aes(x = SECTOR)) +
+  geom_bar(fill = "brown", color = "black") +
+  labs(title = "Cantidad de Individuos por SECTOR",
+       x = "SECTOR", 
+       y = "Cantidad") +
+  theme_minimal()
+```
+En esta se puede ver como hay más personas del sector privado que del público 					
+
+```{r}
+ggplot(moras, aes(x = INDICADOR_ACTIVO)) +
+  geom_bar(fill = "brown", color = "black") +
+  labs(title = "Cantidad de Individuos por INDICADOR_ACTIVO",
+       x = "INDICADOR_ACTIVO", 
+       y = "Cantidad") +
+  theme_minimal()
+```
+Se puede ver como todos estan activos 				
+
+```{r}
+ggplot(moras, aes(x = INDICADOR_MOROSO)) +
+  geom_bar(fill = "brown", color = "black") +
+  labs(title = "Cantidad de Individuos por INDICADOR_ACTIVO",
+       x = "INDICADOR_ACTIVO", 
+       y = "Cantidad") +
+  theme_minimal()
+```
+se puede ver que la mayoria de las personas si van pagando sus cuotas y que no son morosos pero que si hay morosidad				
+
+```{r}
+ggplot(moras, aes(x = EDAD)) +
+  geom_bar(fill = "brown", color = "black") +
+  labs(title = "Cantidad de Individuos por INDICADOR_ACTIVO",
+       x = "SEXO", 
+       y = "Cantidad") +
+  theme_minimal()
+```
+Se puede ver como se distribuyo las edades de las personas y que la mayor cantida esta entre los 25 y los 45 	
 
 
 
