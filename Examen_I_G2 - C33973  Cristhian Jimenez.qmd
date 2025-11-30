@@ -70,7 +70,7 @@ moras$ATIPICO_EDAD <- "Atípico"
 moras$ATIPICO_EDAD[abs(Z_EDAD) > 1.96] <- "Normal"
 ```
 
-4. (r) Detecte el porcentaje de valores faltantes en cada una de las columnas.
+4.(r) Detecte el porcentaje de valores faltantes en cada una de las columnas.
 ```{r}
 for (columna in names(moras)) {
   contar_na <- sum(is.na(moras[[columna]]))
@@ -86,7 +86,15 @@ moras$SALARIO[is.na(moras$SALARIO)] <- mean(moras$SALARIO, na.rm = TRUE)
 moras$TIPO_ASEGURAMIENTO[is.na(moras$TIPO_ASEGURAMIENTO)] <- "DESCONOCIDO"
 ```
 
-
+6.(r) Realice gráficos donde se vea la cantidad de individuos por cada categoría
+```{r}
+ggplot(moras, aes(x = SEXO)) +
+  geom_bar(fill = "brown", color = "black") +
+  labs(title = "Cantidad de Individuos por SEXO",
+       x = "SEXO", 
+       y = "Cantidad") +
+  theme_minimal()
+```
 
 
 
