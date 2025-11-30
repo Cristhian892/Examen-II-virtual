@@ -29,6 +29,7 @@ moras <- read_delim("moras.txt", delim = ",")
 ```
 
 2.(r) Realice un resumen de 5 números incluyendo el promedio. Para las columnas numéricas
+
 ```{r}
 Estadistica_EDAD <- moras %>% 
   summarise(
@@ -53,6 +54,7 @@ Estadistica_SALARIO
 ```
 
 3.(r) Realice una columna donde se identifiquen valores atípicos haciendo uso del Z-Score, de tal manera que si el valor absoluto del Z-Score es mayor a 1,96 se considera un valor atípico. Esto para la columna de salario y edad.
+
 ```{r}
 ## Z-Score para salario
 promedio_salario <- mean(moras$SALARIO, na.rm = TRUE)
@@ -71,6 +73,7 @@ moras$ATIPICO_EDAD[abs(Z_EDAD) > 1.96] <- "Normal"
 ```
 
 4.(r) Detecte el porcentaje de valores faltantes en cada una de las columnas.
+
 ```{r}
 for (columna in names(moras)) {
   contar_na <- sum(is.na(moras[[columna]]))
@@ -80,6 +83,7 @@ for (columna in names(moras)) {
 ```
 
 5.(r) Impute los valores faltantes haciendo uso de algún método de su preferencia.
+
 ```{r}
 moras$EDAD[is.na(moras$EDAD)] <- mean(moras$EDAD, na.rm = TRUE)
 moras$SALARIO[is.na(moras$SALARIO)] <- mean(moras$SALARIO, na.rm = TRUE)
@@ -87,6 +91,7 @@ moras$TIPO_ASEGURAMIENTO[is.na(moras$TIPO_ASEGURAMIENTO)] <- "DESCONOCIDO"
 ```
 
 6.(r) Realice gráficos donde se vea la cantidad de individuos por cada categoría
+
 ```{r}
 ggplot(moras, aes(x = SEXO)) +
   geom_bar(fill = "brown", color = "black") +
@@ -95,7 +100,8 @@ ggplot(moras, aes(x = SEXO)) +
        y = "Cantidad") +
   theme_minimal()
 ```
-Se puede ver que nuestros datos tiene más hombres que mujeres					
+
+Se puede ver que nuestros datos tiene más hombres que mujeres
 
 ```{r}
 ggplot(moras, aes(x = SALARIO)) +
@@ -105,7 +111,8 @@ ggplot(moras, aes(x = SALARIO)) +
        y = "Cantidad") +
   theme_minimal()
 ```
-Se puede ver que en algunos casos, los salario son bastantes grande en comparación con los demás, note que tiene un cero de más en cada columna, entonces para la comprensión solo se tiene que eliminar uno, no son 5 millones, sino 500 mil y así						
+
+Se puede ver que en algunos casos, los salario son bastantes grande en comparación con los demás, note que tiene un cero de más en cada columna, entonces para la comprensión solo se tiene que eliminar uno, no son 5 millones, sino 500 mil y así
 
 ```{r}
 ggplot(moras, aes(x = SECTOR)) +
@@ -115,7 +122,8 @@ ggplot(moras, aes(x = SECTOR)) +
        y = "Cantidad") +
   theme_minimal()
 ```
-En esta se puede ver como hay más personas del sector privado que del público 					
+
+En esta se puede ver como hay más personas del sector privado que del público
 
 ```{r}
 ggplot(moras, aes(x = INDICADOR_ACTIVO)) +
@@ -125,7 +133,8 @@ ggplot(moras, aes(x = INDICADOR_ACTIVO)) +
        y = "Cantidad") +
   theme_minimal()
 ```
-Se puede ver como todos estan activos 				
+
+Se puede ver como todos estan activos
 
 ```{r}
 ggplot(moras, aes(x = INDICADOR_MOROSO)) +
@@ -135,7 +144,8 @@ ggplot(moras, aes(x = INDICADOR_MOROSO)) +
        y = "Cantidad") +
   theme_minimal()
 ```
-se puede ver que la mayoria de las personas si van pagando sus cuotas y que no son morosos pero que si hay morosidad				
+
+se puede ver que la mayoria de las personas si van pagando sus cuotas y que no son morosos pero que si hay morosidad
 
 ```{r}
 ggplot(moras, aes(x = EDAD)) +
@@ -145,10 +155,11 @@ ggplot(moras, aes(x = EDAD)) +
        y = "Cantidad") +
   theme_minimal()
 ```
-Se puede ver como se distribuyo las edades de las personas y que la mayor cantida esta entre los 25 y los 45 	
 
-7. (Excel) Realice un gráfico para cada una de las variables categóricas en donde se
- vea el porcentaje de personas morosa por cada clase. Analice los resultados.
+Se puede ver como se distribuyo las edades de las personas y que la mayor cantida esta entre los 25 y los 45
+
+7.  (Excel) Realice un gráfico para cada una de las variables categóricas en donde se vea el porcentaje de personas morosa por cada clase. Analice los resultados.
+
 ```{r}
 variables_categoricas <- c("SEXO", "TIPO_ASEGURAMIENTO", "SECTOR", "INDICADOR_ACTIVO", "INDICADOR.EXTRANJERO")
 
@@ -192,6 +203,7 @@ for (variable in variables_categoricas) {
 ```
 
 8.(r) Para las variables numéricas realice gráficos de barras donde se ponga un color de acuerdo a si es moroso o no. Analice los resultados.
+
 ```{r}
 # Crear los rangos de salario y edad
 moras <- moras %>%
@@ -250,19 +262,10 @@ for (variable in variables_numericas) {
 }
 ```
 
-9.(r) Replique lo anterior, items 2-8, en el lenguaje de programación R y haga uso de Git, agregue un .gitignore conveniente. Cada vez que termine un punto realice un commit. El commit final debe ser el punto que se muestra a continuación. Usar commits convencionales.
-repositorio https://github.com/Cristhian892/Examen-II-virtual.git
-nota: se me olvido hacer los commit, los hice cuando termine hasta el punto 8 por estan segudos, el punto 10 cuando realice los commit de subida del 2-8 no lo e realio
+9.(r) Replique lo anterior, items 2-8, en el lenguaje de programación R y haga uso de Git, agregue un .gitignore conveniente. Cada vez que termine un punto realice un commit. El commit final debe ser el punto que se muestra a continuación. Usar commits convencionales. repositorio https://github.com/Cristhian892/Examen-II-virtual.git nota: se me olvido hacer los commit, los hice cuando termine hasta el punto 8 por estan segudos, el punto 10 cuando realice los commit de subida del 2-8 no lo e realio
 
-10. Se busca encontrar cuáles son las variables que podrían tener mayor relación con que la persona sea morosa o no, para ello se decide realizar un árbol de decisión por su interpretabilidad y su fácil explicación a los altos mandos. A continuación se adjunta un código ejemplo de cómo se construye un árbol y cómo se muestra
-$ #| eval: false
-$ library(rpart)
-$ library(rpart.plot)
-$ tree <- rpart(y~., data = df)
-$ rpart.plot(tree)
-En este caso la variable y es la variable que se quiere explicar con las otras y . indica que se usen todas las variables, recuerde eliminar el identificador único del df.
-Podría requerir codificar de una manera diferente algunas clases en las variables categóricas, esto para una mejor visualización.
-Explique los resultados del árbol para alguien que no tiene tanta formación cuantitativa y busca tomar decisiones con base en sus resultados.
+10. Se busca encontrar cuáles son las variables que podrían tener mayor relación con que la persona sea morosa o no, para ello se decide realizar un árbol de decisión por su interpretabilidad y su fácil explicación a los altos mandos. A continuación se adjunta un código ejemplo de cómo se construye un árbol y cómo se muestra \$ #\| eval: false \$ library(rpart) \$ library(rpart.plot) \$ tree \<- rpart(y\~., data = df) \$ rpart.plot(tree) En este caso la variable y es la variable que se quiere explicar con las otras y . indica que se usen todas las variables, recuerde eliminar el identificador único del df. Podría requerir codificar de una manera diferente algunas clases en las variables categóricas, esto para una mejor visualización. Explique los resultados del árbol para alguien que no tiene tanta formación cuantitativa y busca tomar decisiones con base en sus resultados.
+
 ```{r}
 moras_menos_IDENTIFICACION <- moras %>% 
   select(-IDENTIFICACION)
@@ -272,29 +275,7 @@ moras_factores <-  moras_menos_IDENTIFICACION %>%
 tree <- rpart(INDICADOR_MOROSO ~., data = moras_factores)
 rpart.plot(tree)
 ```
-El árbol nos ayuda a observar cuáles son las variables que tienen un mayor peso para detectar si alguien será moroso. En el árbol se ve como los trabajadores independientes son de gran riesgo en volverse morosos, los que son asegurados voluntarios presentan un riesgo moderado y los asalariados son de menor riesgo.
-Las personas con salarios bajaos son más propensos a quedar morosos y cuando aumenta el salario el riesgo de morosidad empieza a disminuir. Ahora viendo el sector, vemos que el sector privado  tiene mayor probabilidad de ser morosos que los del sector público y con base a la edad  entre más joven más propenso a ser moroso y entre más edad este riesgo baja.
 
-Bibliografica 
-*https://www.simplypsychology.org/z-score.html
-*https://www.statisticshowto.com/probability-and-statistics/z-score/
-*https://www-spsanderson-com.translate.goog/steveondata/posts/2024-12-03/?_x_tr_sl=en&_x_tr_tl=es&_x_tr_hl=es&_x_tr_pto=tc
+El árbol nos ayuda a observar cuáles son las variables que tienen un mayor peso para detectar si alguien será moroso. En el árbol se ve como los trabajadores independientes son de gran riesgo en volverse morosos, los que son asegurados voluntarios presentan un riesgo moderado y los asalariados son de menor riesgo. Las personas con salarios bajaos son más propensos a quedar morosos y cuando aumenta el salario el riesgo de morosidad empieza a disminuir. Ahora viendo el sector, vemos que el sector privado tiene mayor probabilidad de ser morosos que los del sector público y con base a la edad entre más joven más propenso a ser moroso y entre más edad este riesgo baja.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Bibliografica *https://www.simplypsychology.org/z-score.html* https://www.statisticshowto.com/probability-and-statistics/z-score/ \*https://www-spsanderson-com.translate.goog/steveondata/posts/2024-12-03/?\_x_tr_sl=en&\_x_tr_tl=es&\_x_tr_hl=es&\_x_tr_pto=tc
